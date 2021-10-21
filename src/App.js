@@ -14,6 +14,17 @@ import EditProfile from "./components/users/EditProfile";
 import ResumeForm from "./components/resumes/ResumeForm";
 import ViewAllTemplates from "./components/resumes/ViewAllTemplates";
 
+import axios from "axios";
+import AuthService from "./services/AuthService";
+
+import ProtectedRoute from "./services/ProtectedRoute";
+
+axios.interceptors.request.use((request) => {
+  request.headers.common.Authorization = `Bearer ${AuthService.getToken()}`;
+  // console.log(request);
+  return request;
+});
+
 function App() {
   return (
     <div className="App">
@@ -38,9 +49,7 @@ function App() {
           <Route exact path="/reset-password">
             <ResetPassword />
           </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
+          <ProtectedRoute exact path="/profile" component={Profile} />
           <Route exact path="/edit">
             <EditProfile />
           </Route>

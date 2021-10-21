@@ -1,15 +1,24 @@
 import axios from "axios";
 
-const loginUrl = "http://localhost:5000/api/login";
+const loginUrl = "/api/login";
 
 const AuthService = {
   login: (user) => {
     axios
       .post(loginUrl, user)
       .then((res) => {
-        return console.log(res);
+        localStorage.setItem("token", res.data.token);
       })
       .catch((err) => console.log(err));
+  },
+  getToken: () => {
+    return localStorage.getItem("token");
+  },
+  isLoggedIn: () => {
+    return !!localStorage.getItem("token");
+  },
+  logout: () => {
+    return localStorage.removeItem("token");
   },
 };
 
