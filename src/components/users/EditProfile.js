@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
+import AuthService from "../../services/AuthService";
 
 export default function EditProfile() {
+  const [user, setUser] = useState({
+    email: "",
+    username: "",
+    password: "",
+    verified: false,
+  });
+
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await AuthService.edit(user);
+    history.push("/profile");
+  };
+
+  useEffect(() => {
+    async function fetchUser() {
+      const res = await AuthService.profile();
+      setUser(res);
+    }
+    fetchUser();
+  }, []);
+
   return (
     <>
       <div className="container">
@@ -11,25 +43,31 @@ export default function EditProfile() {
                 <h3 className="mb-0 float-left">Edit Profile</h3>
               </div>
               <div className="card-body">
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="emailInput">
+                    <label className="float-left" htmlFor="email">
                       New Email
                     </label>
                     <input
-                      id="emailInput"
+                      id="email"
+                      name="email"
                       type="email"
                       className="form-control rounded-0"
+                      value={user.email}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="usernameInput">
+                    <label className="float-left" htmlFor="username">
                       New Username
                     </label>
                     <input
-                      id="usernameInput"
+                      id="username"
+                      name="username"
                       type="text"
                       className="form-control rounded-0"
+                      value={user.username}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="form-group">
@@ -37,10 +75,13 @@ export default function EditProfile() {
                       Password or New Password If you want to change.
                     </label>
                     <input
-                      id="passwordInput"
+                      id="password"
+                      name="password"
                       type="password"
                       className="form-control rounded-0"
                       placeholder="Enter password"
+                      value={user.password}
+                      onChange={handleChange}
                     />
                   </div>
                   <button type="submit" className="btn btn-primary float-right">

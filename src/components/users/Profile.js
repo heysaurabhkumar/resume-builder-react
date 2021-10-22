@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import AuthService from "../../services/AuthService";
 
 export default function Profile() {
+  const [user, setUser] = useState({ email: "", usename: "", verified: false });
+
+  useEffect(() => {
+    async function fetchUser() {
+      const res = await AuthService.profile();
+      setUser(res);
+    }
+    fetchUser();
+  }, []);
   return (
     <>
       <div className="row pt-5">
@@ -15,11 +25,11 @@ export default function Profile() {
               </h3>
             </div>
             <div className="card-body">
-              <h5 className="card-title">Hello</h5>
+              <h5 className="card-title">Hello {user.username}</h5>
               <br />
-              <p className="card-text">Email:</p>
+              <p className="card-text">Email: {user.email}</p>
               <br />
-              <p className="card-text">Mobile:</p>
+              <p className="card-text">Mobile: {user.mobile}</p>
             </div>
           </div>
         </div>

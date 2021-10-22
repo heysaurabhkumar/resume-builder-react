@@ -4,13 +4,14 @@ import AuthService from "../services/AuthService";
 
 export default function Nav() {
   const [loggedin, setLoggedin] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
-  const logout = () => {
-    AuthService.logout();
-  };
+  // const logout = () => {
+  //   AuthService.logout();
+  // };
 
   const handleNav = () => {
-    setLoggedin(AuthService.isLoggedIn());
+    setRefresh(!refresh);
   };
 
   useEffect(() => {

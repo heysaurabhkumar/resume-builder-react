@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import AuthService from "../../services/AuthService";
 
 export default function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
-
+  const history = useHistory();
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(user);
-    AuthService.login(user);
+    await AuthService.login(user);
+    history.push("/profile");
   };
+
+  useEffect(() => {
+    if (AuthService.isLoggedIn()) {
+      history.push("/profile");
+    }
+  });
 
   return (
     <>

@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
+import AuthService from "../../services/AuthService";
 
 export default function Register() {
+  const [user, setUser] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await AuthService.register(user);
+    history.push("/profile");
+
+    // console.log(user);
+  };
+
+  useEffect(() => {
+    if (AuthService.isLoggedIn()) {
+      history.push("/profile");
+    }
+  });
+
   return (
     <>
       <div className="container">
@@ -11,56 +43,61 @@ export default function Register() {
                 <h3 className="mb-0 float-left">Register</h3>
               </div>
               <div className="card-body">
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="emailInput">
+                    <label className="float-left" htmlFor="email">
                       Email
                     </label>
                     <input
                       required
-                      id="emailInput"
+                      id="email"
                       name="email"
                       type="email"
                       className="form-control rounded-0"
+                      value={user.email}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="usernameInput">
+                    <label className="float-left" htmlFor="username">
                       Username
                     </label>
                     <input
                       required
-                      id="usernameInput"
+                      id="username"
                       name="username"
                       type="text"
                       className="form-control rounded-0"
+                      value={user.username}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="passwordInput">
+                    <label className="float-left" htmlFor="password">
                       Password
                     </label>
                     <input
                       required
-                      id="passwordInput"
+                      id="password"
                       name="password"
                       type="password"
                       className="form-control rounded-0"
+                      value={user.password}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="form-group">
-                    <label
-                      className="float-left"
-                      htmlFor="confirmPasswordInput"
-                    >
+                    <label className="float-left" htmlFor="confirmPassword">
                       Confirm Password
                     </label>
                     <input
                       required
-                      id="confirmPasswordInput"
+                      id="confirmPassword"
                       name="confirmPassword"
-                      type="text"
+                      type="password"
                       className="form-control rounded-0"
+                      value={user.confirmPassword}
+                      onChange={handleChange}
                     />
                   </div>
                   <button className="btn btn-primary float-right">

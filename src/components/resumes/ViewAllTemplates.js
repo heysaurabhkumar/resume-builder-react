@@ -11,7 +11,7 @@ export default function ViewAllTemplates() {
             <Link to="/template-one">
               <img
                 className="template"
-                src={"../../assests/images/resume-templates/template.jpg"}
+                src={"/images/resume-templates/template.PNG"}
                 alt="template-one"
               />
             </Link>
@@ -20,7 +20,7 @@ export default function ViewAllTemplates() {
             <Link to="/template-two">
               <img
                 className="template"
-                src={"../../assests/images/resume-templates/template1.jpg"}
+                src={"/images/resume-templates/template1.PNG"}
                 alt="template-two"
               />
             </Link>
