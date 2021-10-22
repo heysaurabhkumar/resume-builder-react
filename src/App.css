@@ -75,6 +75,25 @@ label {
   white-space: pre-line;
 }
 
+.bgleft {
+  background-color: #e2e2e2;
+  color: 494a45;
+}
+
+.bgright {
+  background-color: #494a45;
+  color: #e2e2e2;
+}
+
+.header-one {
+  background-color: #aeb38b;
+  color: black;
+}
+
+.body-one {
+  color: #494a45;
+}
+
 @media screen and (max-width: 770px) {
   .vl {
     display: none;
