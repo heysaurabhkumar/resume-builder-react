@@ -40,12 +40,12 @@ export default function Register() {
           <div className="col-md-6 mx-auto">
             <div className="card rounded-0">
               <div className="card-header">
-                <h3 className="mb-0 float-left">Register</h3>
+                <h3 className="mb-0 ">Register</h3>
               </div>
               <div className="card-body">
                 <form className="form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="email">
+                    <label className="" htmlFor="email">
                       Email
                     </label>
                     <input
@@ -59,7 +59,7 @@ export default function Register() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="username">
+                    <label className="" htmlFor="username">
                       Username
                     </label>
                     <input
@@ -73,7 +73,7 @@ export default function Register() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="password">
+                    <label className="" htmlFor="password">
                       Password
                     </label>
                     <input
@@ -87,7 +87,7 @@ export default function Register() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="confirmPassword">
+                    <label className="" htmlFor="confirmPassword">
                       Confirm Password
                     </label>
                     <input

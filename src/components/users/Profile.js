@@ -17,10 +17,10 @@ export default function Profile() {
         <div className="col-md-6 mx-auto">
           <div className="card rounded-0">
             <div className="card-header">
-              <h3 className="mb-0 float-left">
+              <h3 className="mb-0 ">
                 User Profile
                 <div className="verified mt-2">
-                  <h6 className="float-left">Verified Account</h6>
+                  <h6 className="">Verified Account</h6>
                 </div>
               </h3>
             </div>

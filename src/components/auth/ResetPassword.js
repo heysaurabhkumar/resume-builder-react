@@ -8,12 +8,12 @@ export default function ResetPassword() {
           <div className="col-md-6 mx-auto">
             <div className="card rounded-0">
               <div className="card-header">
-                <h3 className="mb-0 float-left">Reset Password</h3>
+                <h3 className="mb-0 ">Reset Password</h3>
               </div>
               <div className="card-body">
                 <form className="form">
                   <div className="form-group">
-                    <label className="float-left" htmlFor="passwordInput">
+                    <label className="" htmlFor="passwordInput">
                       New Password
                     </label>
                     <input
@@ -25,10 +25,7 @@ export default function ResetPassword() {
                     />
                   </div>
                   <div className="form-group">
-                    <label
-                      className="float-left"
-                      htmlFor="confirmPasswordInput"
-                    >
+                    <label className="" htmlFor="confirmPasswordInput">
                       Confirm Password
                     </label>
                     <input

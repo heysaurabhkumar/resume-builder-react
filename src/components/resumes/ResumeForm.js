@@ -11,7 +11,7 @@ export default function ResumeForm() {
           <div className="row">
             <div className="col-md-6 mt-2">
               <div className="form-group mt-3">
-                <label className="float-left" htmlFor="fullNameInput">
+                <label className="" htmlFor="fullNameInput">
                   Full Name
                 </label>
                 <input
@@ -23,7 +23,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="positionInput">
+                <label className="" htmlFor="positionInput">
                   Current Position
                 </label>
                 <input
@@ -35,7 +35,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="emailInput">
+                <label className="" htmlFor="emailInput">
                   Email
                 </label>
                 <input
@@ -46,7 +46,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="mobileInput">
+                <label className="" htmlFor="mobileInput">
                   Mobile No
                 </label>
                 <input
@@ -57,7 +57,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="addressInput">
+                <label className="" htmlFor="addressInput">
                   Address
                 </label>
                 <textarea
@@ -69,7 +69,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="skillsInput">
+                <label className="" htmlFor="skillsInput">
                   Skills
                 </label>
                 <textarea
@@ -80,7 +80,7 @@ export default function ResumeForm() {
                 ></textarea>
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="profileInput">
+                <label className="" htmlFor="profileInput">
                   Enter your picture url
                 </label>
                 <input
@@ -92,7 +92,7 @@ export default function ResumeForm() {
               </div>
               <p className="text-secondary mt-3">Social Links</p>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="linkedInput">
+                <label className="" htmlFor="linkedInput">
                   LinkedIn
                 </label>
                 <input
@@ -103,7 +103,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="facebookInput">
+                <label className="" htmlFor="facebookInput">
                   Facebook
                 </label>
                 <input
@@ -114,7 +114,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="instagramInput">
+                <label className="" htmlFor="instagramInput">
                   Instagram
                 </label>
                 <input
@@ -125,7 +125,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="languageInput">
+                <label className="" htmlFor="languageInput">
                   Languages Speak
                 </label>
                 <textarea
@@ -137,7 +137,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="objectiveInput">
+                <label className="" htmlFor="objectiveInput">
                   Objective
                 </label>
                 <textarea
@@ -150,7 +150,7 @@ export default function ResumeForm() {
             </div>
             <div className="col-md-6 mt-2">
               <div className="form-group mt-3">
-                <label className="float-left" htmlFor="experienceInput">
+                <label className="" htmlFor="experienceInput">
                   Experience
                 </label>
                 <textarea
@@ -168,7 +168,7 @@ export default function ResumeForm() {
                 </div>
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="projectInput">
+                <label className="" htmlFor="projectInput">
                   Projects
                 </label>
                 <textarea
@@ -186,7 +186,7 @@ export default function ResumeForm() {
                 </div>
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="certificateInput">
+                <label className="" htmlFor="certificateInput">
                   Certifications
                 </label>
                 <textarea
@@ -205,7 +205,7 @@ export default function ResumeForm() {
                 </div>
               </div>
               <div className="form-group mt-2">
-                <label className="float-left" htmlFor="educationInput">
+                <label className="" htmlFor="educationInput">
                   Educations
                 </label>
                 <textarea

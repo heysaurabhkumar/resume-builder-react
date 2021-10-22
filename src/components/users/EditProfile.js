@@ -40,12 +40,12 @@ export default function EditProfile() {
           <div className="col-md-6 mx-auto">
             <div className="card rounded-0">
               <div className="card-header">
-                <h3 className="mb-0 float-left">Edit Profile</h3>
+                <h3 className="mb-0 ">Edit Profile</h3>
               </div>
               <div className="card-body">
                 <form className="form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="email">
+                    <label className="" htmlFor="email">
                       New Email
                     </label>
                     <input
@@ -58,7 +58,7 @@ export default function EditProfile() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="username">
+                    <label className="" htmlFor="username">
                       New Username
                     </label>
                     <input
@@ -71,7 +71,7 @@ export default function EditProfile() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="passwordInput">
+                    <label className="" htmlFor="passwordInput">
                       Password or New Password If you want to change.
                     </label>
                     <input
@@ -94,12 +94,12 @@ export default function EditProfile() {
           <div className="col-md-6 mx-auto">
             <div className="card rounded-0">
               <div className="card-header">
-                <h3 className="mb-0 float-left">Profile Verification</h3>
+                <h3 className="mb-0 ">Profile Verification</h3>
               </div>
               <div className="card-body">
                 <form className="form">
                   <div className="form-group">
-                    <label className="float-left" htmlFor="mobileInput">
+                    <label className="" htmlFor="mobileInput">
                       Mobile Number
                     </label>
                     <input
@@ -114,7 +114,7 @@ export default function EditProfile() {
                     </button>
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="otpInput">
+                    <label className="" htmlFor="otpInput">
                       OTP
                     </label>
                     <input

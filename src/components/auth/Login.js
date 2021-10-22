@@ -31,12 +31,12 @@ export default function Login() {
           <div className="col-md-6 mx-auto">
             <div className="card rounded-0">
               <div className="card-header">
-                <h3 className="mb-0 float-left">Login</h3>
+                <h3 className="mb-0 ">Login</h3>
               </div>
               <div className="card-body">
                 <form className="form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="email">
+                    <label className="" htmlFor="email">
                       Email
                     </label>
                     <input
@@ -51,7 +51,7 @@ export default function Login() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="float-left" htmlFor="password">
+                    <label className="" htmlFor="password">
                       Password
                     </label>
                     <input
@@ -65,7 +65,7 @@ export default function Login() {
                       required
                     />
                   </div>
-                  <Link className="float-left mt-10" to="/forgot-password">
+                  <Link className=" mt-10" to="/forgot-password">
                     Forgot Password
                   </Link>
                   <button type="submit" className="btn btn-success float-right">
