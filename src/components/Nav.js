@@ -4,7 +4,6 @@ import AuthService from "../services/AuthService";
 
 export default function Nav() {
   const [loggedin, setLoggedin] = useState(false);
-  const [refresh, setRefresh] = useState(false);
 
   const history = useHistory();
 
@@ -14,13 +13,9 @@ export default function Nav() {
     history.push("/login");
   };
 
-  const handleNav = () => {
-    setRefresh(!refresh);
-  };
-
   useEffect(() => {
     setLoggedin(AuthService.isLoggedIn());
-  }, []);
+  }, [loggedin]);
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -71,11 +66,7 @@ export default function Nav() {
               {!loggedin && (
                 <>
                   <li className="nav-item">
-                    <NavLink
-                      className="nav-link"
-                      to="/login"
-                      onClick={handleNav}
-                    >
+                    <NavLink className="nav-link" to="/login">
                       Login
                     </NavLink>
                   </li>

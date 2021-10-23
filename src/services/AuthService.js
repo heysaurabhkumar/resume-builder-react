@@ -18,7 +18,11 @@ const AuthService = {
     return localStorage.getItem("token");
   },
   isLoggedIn: () => {
-    return !!localStorage.getItem("token");
+    try {
+      return !!localStorage.getItem("token");
+    } catch (error) {
+      return console.log(error);
+    }
   },
   logout: () => {
     try {

@@ -120,7 +120,7 @@ export default function ResumeForm() {
   return (
     <>
       <div className="container">
-        <div className="container text-center mt-2">
+        <div className="text-center mt-2">
           <h1>Resume Builder</h1>
         </div>
         <form onSubmit={handleSubmit}>
@@ -142,9 +142,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="" htmlFor="position">
-                  Current Position
-                </label>
+                <label htmlFor="position">Current Position</label>
                 <input
                   type="text"
                   id="position"
@@ -157,9 +155,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="" htmlFor="email">
-                  Email
-                </label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   id="email"
@@ -171,9 +167,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="mobile">
-                  Mobile No
-                </label>
+                <label htmlFor="mobile">Mobile No</label>
                 <input
                   type="text"
                   id="mobile"
@@ -185,9 +179,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="address">
-                  Address
-                </label>
+                <label htmlFor="address">Address</label>
                 <textarea
                   id="address"
                   name="address"
@@ -200,9 +192,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="" htmlFor="skills">
-                  Skills
-                </label>
+                <label htmlFor="skills">Skills</label>
                 <textarea
                   id="skills"
                   name="skills"
@@ -214,9 +204,7 @@ export default function ResumeForm() {
                 ></textarea>
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="profile">
-                  Enter your picture url
-                </label>
+                <label htmlFor="profile">Enter your picture url</label>
                 <input
                   type="text"
                   id="profile"
@@ -229,9 +217,7 @@ export default function ResumeForm() {
               </div>
               <p className="text-secondary mt-3">Social Links</p>
               <div className="form-group mt-2">
-                <label className="" htmlFor="linkedin">
-                  LinkedIn
-                </label>
+                <label htmlFor="linkedin">LinkedIn</label>
                 <input
                   type="text"
                   id="linkedin"
@@ -243,9 +229,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="facebook">
-                  Facebook
-                </label>
+                <label htmlFor="facebook">Facebook</label>
                 <input
                   type="text"
                   id="facebook"
@@ -257,9 +241,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="instagram">
-                  Instagram
-                </label>
+                <label htmlFor="instagram">Instagram</label>
                 <input
                   type="text"
                   id="instagram"
@@ -271,9 +253,7 @@ export default function ResumeForm() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="languages">
-                  Languages Speak
-                </label>
+                <label htmlFor="languages">Languages Speak</label>
                 <textarea
                   id="languages"
                   name="languages"
@@ -286,9 +266,7 @@ export default function ResumeForm() {
               </div>
 
               <div className="form-group mt-2">
-                <label className="" htmlFor="objective">
-                  Objective
-                </label>
+                <label htmlFor="objective">Objective</label>
                 <textarea
                   id="objective"
                   name="objective"
