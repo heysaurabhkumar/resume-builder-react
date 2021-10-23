@@ -14,16 +14,88 @@ export default function ResumeForm() {
     instagram: "",
     languages: "",
     objective: "",
-    experience: "",
-    project: "",
-    certification: "",
-    education: "",
+    experience: [""],
+    project: [""],
+    certification: [""],
+    education: [""],
   });
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setResumeForm({ ...resumeForm, [name]: value });
+  };
+
+  const handleChangeExp = (e, index) => {
+    resumeForm.experience[index] = e.target.value;
+    setResumeForm({ ...resumeForm, experience: resumeForm.experience });
+  };
+
+  const addExpFields = () => {
+    setResumeForm({
+      ...resumeForm,
+      experience: [...resumeForm.experience, ""],
+    });
+  };
+
+  const removeExpFields = () => {
+    const len = resumeForm.experience.length;
+    resumeForm.experience.splice(len - 1, 1);
+    setResumeForm({ ...resumeForm, experience: resumeForm.experience });
+  };
+
+  const handleChangePro = (e, index) => {
+    resumeForm.project[index] = e.target.value;
+    setResumeForm({ ...resumeForm, project: resumeForm.project });
+  };
+
+  const addProFields = () => {
+    setResumeForm({
+      ...resumeForm,
+      project: [...resumeForm.project, ""],
+    });
+  };
+
+  const removeProFields = () => {
+    const len = resumeForm.project.length;
+    resumeForm.project.splice(len - 1, 1);
+    setResumeForm({ ...resumeForm, project: resumeForm.project });
+  };
+
+  const handleChangeCer = (e, index) => {
+    resumeForm.certification[index] = e.target.value;
+    setResumeForm({ ...resumeForm, certification: resumeForm.certification });
+  };
+
+  const addCerFields = () => {
+    setResumeForm({
+      ...resumeForm,
+      certification: [...resumeForm.certification, ""],
+    });
+  };
+
+  const removeCerFields = () => {
+    const len = resumeForm.certification.length;
+    resumeForm.certification.splice(len - 1, 1);
+    setResumeForm({ ...resumeForm, certification: resumeForm.certification });
+  };
+
+  const handleChangeEdu = (e, index) => {
+    resumeForm.education[index] = e.target.value;
+    setResumeForm({ ...resumeForm, education: resumeForm.education });
+  };
+
+  const addEduFields = () => {
+    setResumeForm({
+      ...resumeForm,
+      education: [...resumeForm.education, ""],
+    });
+  };
+
+  const removeEduFields = () => {
+    const len = resumeForm.education.length;
+    resumeForm.education.splice(len - 1, 1);
+    setResumeForm({ ...resumeForm, education: resumeForm.education });
   };
 
   const handleSubmit = (e) => {
@@ -215,75 +287,129 @@ export default function ResumeForm() {
             </div>
             <div className="col-md-6 mt-2">
               <div className="form-group mt-3">
-                <label className="" htmlFor="experience">
-                  Experience
-                </label>
-                <textarea
-                  rows="2"
-                  className="form-control mt-2"
-                  placeholder="Write your experience"
-                ></textarea>
+                <label>Experience</label>
+                {resumeForm.experience.map((exp, index) => {
+                  return (
+                    <div key={index}>
+                      <textarea
+                        rows="2"
+                        className="form-control mt-2"
+                        placeholder="Write your experience"
+                        value={exp}
+                        onChange={(e) => handleChangeExp(e, index)}
+                      ></textarea>
+                    </div>
+                  );
+                })}
                 <div className="container text-center">
-                  <button type="button" className="btn btn-success btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={addExpFields}
+                    className="btn btn-success btn-sm mx-2"
+                  >
                     Add Experience
                   </button>
-                  <button type="button" className="btn btn-danger btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={removeExpFields}
+                    className="btn btn-danger btn-sm mx-2"
+                  >
                     Remove Experience
                   </button>
                 </div>
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="projectInput">
-                  Projects
-                </label>
-                <textarea
-                  rows="3"
-                  className="form-control mt-2"
-                  placeholder="Write your project"
-                ></textarea>
+                <label>Projects</label>
+                {resumeForm.project.map((pro, index) => {
+                  return (
+                    <div key={index}>
+                      <textarea
+                        rows="3"
+                        className="form-control mt-2"
+                        placeholder="Write your project"
+                        value={pro}
+                        onChange={(e) => handleChangePro(e, index)}
+                      ></textarea>
+                    </div>
+                  );
+                })}
                 <div className="container text-center">
-                  <button type="button" className="btn btn-success btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={addProFields}
+                    className="btn btn-success btn-sm mx-2"
+                  >
                     Add Project
                   </button>
-                  <button type="button" className="btn btn-danger btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={removeProFields}
+                    className="btn btn-danger btn-sm mx-2"
+                  >
                     Remove Project
                   </button>
                 </div>
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="certificateInput">
-                  Certifications
-                </label>
-                <textarea
-                  rows="2"
-                  className="form-control mt-2"
-                  placeholder="Write your certification"
-                ></textarea>
-
+                <label>Certifications</label>
+                {resumeForm.certification.map((cer, index) => {
+                  return (
+                    <div key={index}>
+                      <textarea
+                        rows="2"
+                        className="form-control mt-2"
+                        placeholder="Write your certification"
+                        value={cer}
+                        onChange={(e) => handleChangeCer(e, index)}
+                      ></textarea>
+                    </div>
+                  );
+                })}
                 <div className="container text-center">
-                  <button type="button" className="btn btn-success btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={addCerFields}
+                    className="btn btn-success btn-sm mx-2"
+                  >
                     Add Certification
                   </button>
-                  <button type="button" className="btn btn-danger btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={removeCerFields}
+                    className="btn btn-danger btn-sm mx-2"
+                  >
                     Remove Certification
                   </button>
                 </div>
               </div>
               <div className="form-group mt-2">
-                <label className="" htmlFor="educationInput">
-                  Educations
-                </label>
-                <textarea
-                  rows="3"
-                  className="form-control mt-2"
-                  placeholder="Write your edcation"
-                ></textarea>
-
+                <label>Educations</label>
+                {resumeForm.education.map((edu, index) => {
+                  return (
+                    <div key={index}>
+                      <textarea
+                        rows="3"
+                        className="form-control mt-2"
+                        placeholder="Write your edcation"
+                        value={edu}
+                        onChange={(e) => handleChangeEdu(e, index)}
+                      ></textarea>
+                    </div>
+                  );
+                })}
                 <div className="container text-center">
-                  <button type="button" className="btn btn-success btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={addEduFields}
+                    className="btn btn-success btn-sm mx-2"
+                  >
                     Add Education
                   </button>
-                  <button type="button" className="btn btn-danger btn-sm mx-2">
+                  <button
+                    type="button"
+                    onClick={removeEduFields}
+                    className="btn btn-danger btn-sm mx-2"
+                  >
                     Remove Education
                   </button>
                 </div>
