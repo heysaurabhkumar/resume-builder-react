@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import ResumeService from "../../services/ResumeService";
 
 export default function ResumeForm() {
   const [resumeForm, setResumeForm] = useState({
@@ -98,10 +99,20 @@ export default function ResumeForm() {
     setResumeForm({ ...resumeForm, education: resumeForm.education });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(resumeForm);
+    // console.log(resumeForm);
+    await ResumeService.resume(resumeForm);
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await ResumeService.template();
+      // console.log(res);
+      setResumeForm(res);
+    }
+    fetchData();
+  }, []);
   return (
     <>
       <div className="container">
@@ -121,7 +132,7 @@ export default function ResumeForm() {
                   name="fullname"
                   className="form-control"
                   placeholder="Enter full name"
-                  value={resumeForm.fullname}
+                  value={resumeForm?.fullname}
                   onChange={handleChange}
                 />
               </div>
@@ -136,7 +147,7 @@ export default function ResumeForm() {
                   name="position"
                   className="form-control"
                   placeholder="Enter current position"
-                  value={resumeForm.position}
+                  value={resumeForm?.position}
                   onChange={handleChange}
                 />
               </div>
@@ -151,7 +162,7 @@ export default function ResumeForm() {
                   name="email"
                   className="form-control"
                   placeholder="Enter email"
-                  value={resumeForm.email}
+                  value={resumeForm?.email}
                   onChange={handleChange}
                 />
               </div>
@@ -165,7 +176,7 @@ export default function ResumeForm() {
                   name="mobile"
                   className="form-control"
                   placeholder="Enter mobile number"
-                  value={resumeForm.mobile}
+                  value={resumeForm?.mobile}
                   onChange={handleChange}
                 />
               </div>
@@ -179,7 +190,7 @@ export default function ResumeForm() {
                   rows="3"
                   className="form-control"
                   placeholder="Enter address"
-                  value={resumeForm.address}
+                  value={resumeForm?.address}
                   onChange={handleChange}
                 ></textarea>
               </div>
@@ -194,7 +205,7 @@ export default function ResumeForm() {
                   rows="2"
                   className="form-control"
                   placeholder="Write your skills comma seperated"
-                  value={resumeForm.skills}
+                  value={resumeForm?.skills}
                   onChange={handleChange}
                 ></textarea>
               </div>
@@ -208,7 +219,7 @@ export default function ResumeForm() {
                   name="profile"
                   placeholder="Write your profile url"
                   className="form-control"
-                  value={resumeForm.profile}
+                  value={resumeForm?.profile}
                   onChange={handleChange}
                 />
               </div>
@@ -223,7 +234,7 @@ export default function ResumeForm() {
                   name="linkedin"
                   className="form-control"
                   placeholder="Enter linkedin profile url"
-                  value={resumeForm.linkedin}
+                  value={resumeForm?.linkedin}
                   onChange={handleChange}
                 />
               </div>
@@ -237,7 +248,7 @@ export default function ResumeForm() {
                   name="facebook"
                   className="form-control"
                   placeholder="Enter facebook profile url"
-                  value={resumeForm.facebook}
+                  value={resumeForm?.facebook}
                   onChange={handleChange}
                 />
               </div>
@@ -251,7 +262,7 @@ export default function ResumeForm() {
                   name="instagram"
                   className="form-control"
                   placeholder="Enter instagram profile url"
-                  value={resumeForm.instagram}
+                  value={resumeForm?.instagram}
                   onChange={handleChange}
                 />
               </div>
@@ -265,7 +276,7 @@ export default function ResumeForm() {
                   rows="1"
                   className="form-control"
                   placeholder="Write your languages comma seperated"
-                  value={resumeForm.languages}
+                  value={resumeForm?.languages}
                   onChange={handleChange}
                 ></textarea>
               </div>
@@ -280,7 +291,7 @@ export default function ResumeForm() {
                   rows="4"
                   className="form-control"
                   placeholder="Write your objective"
-                  value={resumeForm.objective}
+                  value={resumeForm?.objective}
                   onChange={handleChange}
                 ></textarea>
               </div>
@@ -288,7 +299,7 @@ export default function ResumeForm() {
             <div className="col-md-6 mt-2">
               <div className="form-group mt-3">
                 <label>Experience</label>
-                {resumeForm.experience.map((exp, index) => {
+                {resumeForm?.experience.map((exp, index) => {
                   return (
                     <div key={index}>
                       <textarea
@@ -320,7 +331,7 @@ export default function ResumeForm() {
               </div>
               <div className="form-group mt-2">
                 <label>Projects</label>
-                {resumeForm.project.map((pro, index) => {
+                {resumeForm?.project.map((pro, index) => {
                   return (
                     <div key={index}>
                       <textarea
@@ -352,7 +363,7 @@ export default function ResumeForm() {
               </div>
               <div className="form-group mt-2">
                 <label>Certifications</label>
-                {resumeForm.certification.map((cer, index) => {
+                {resumeForm?.certification.map((cer, index) => {
                   return (
                     <div key={index}>
                       <textarea
@@ -384,7 +395,7 @@ export default function ResumeForm() {
               </div>
               <div className="form-group mt-2">
                 <label>Educations</label>
-                {resumeForm.education.map((edu, index) => {
+                {resumeForm?.education.map((edu, index) => {
                   return (
                     <div key={index}>
                       <textarea

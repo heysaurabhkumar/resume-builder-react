@@ -71,7 +71,7 @@ export default function EditProfile() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="passwordInput">
+                    <label className="" htmlFor="password">
                       Password or New Password If you want to change.
                     </label>
                     <input
@@ -99,13 +99,14 @@ export default function EditProfile() {
               <div className="card-body">
                 <form className="form">
                   <div className="form-group">
-                    <label className="" htmlFor="mobileInput">
+                    <label className="" htmlFor="mobile">
                       Mobile Number
                     </label>
                     <input
-                      id="mobileInput"
+                      id="mobile"
                       type="tel"
                       className="form-control rounded-0"
+                      placeholder="Enter your mobile number"
                     />
                   </div>
                   <div className="container text-center">
@@ -114,13 +115,14 @@ export default function EditProfile() {
                     </button>
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="otpInput">
+                    <label className="" htmlFor="otp">
                       OTP
                     </label>
                     <input
-                      id="otpInput"
+                      id="otp"
                       type="text"
                       className="form-control rounded-0"
+                      placeholder="Enter otp"
                     />
                   </div>
                   <button type="submit" className="btn btn-success float-right">
