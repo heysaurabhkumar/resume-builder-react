@@ -13,12 +13,13 @@ export default function ForgotPassword() {
               <div className="card-body">
                 <form className="form">
                   <div className="form-group">
-                    <label htmlFor="emailInput">Email</label>
+                    <label htmlFor="email">Email</label>
                     <input
-                      id="emailInput"
+                      id="email"
                       name="email"
                       type="email"
                       className="form-control rounded-0"
+                      placeholder="Enter registered email"
                       required
                     />
                   </div>

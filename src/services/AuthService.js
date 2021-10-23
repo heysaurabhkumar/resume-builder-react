@@ -21,7 +21,11 @@ const AuthService = {
     return !!localStorage.getItem("token");
   },
   logout: () => {
-    return localStorage.removeItem("token");
+    try {
+      return localStorage.removeItem("token");
+    } catch (error) {
+      return console.log(error);
+    }
   },
   register: async (user) => {
     try {

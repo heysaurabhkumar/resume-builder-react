@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import AuthService from "../services/AuthService";
 
 export default function Nav() {
   const [loggedin, setLoggedin] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
-  // const logout = () => {
-  //   AuthService.logout();
-  // };
+  const history = useHistory();
+
+  const logout = (e) => {
+    e.preventDefault();
+    AuthService.logout();
+    history.push("/login");
+  };
 
   const handleNav = () => {
     setRefresh(!refresh);
@@ -90,18 +94,10 @@ export default function Nav() {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/logout">
+                    <NavLink className="nav-link" to="/logout" onClick={logout}>
                       Logout
                     </NavLink>
                   </li>
-                  {/* <li className="nav-item">
-                    <input
-                      className="nav-link"
-                      type="button"
-                      value="Logout"
-                      onClick={logout()}
-                    />
-                  </li> */}
                 </>
               )}
             </ul>
