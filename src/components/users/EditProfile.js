@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import AuthService from "../../services/AuthService";
+import OtpService from "../../services/OtpService";
 
 export default function EditProfile() {
   const [user, setUser] = useState({
     email: "",
     username: "",
     password: "",
+    mobile: "",
     verified: false,
+  });
+
+  const [mobileVerify, setMobileVerify] = useState({
+    mobile: "",
+    otp: "",
   });
 
   const history = useHistory();
@@ -19,9 +26,25 @@ export default function EditProfile() {
     setUser({ ...user, [name]: value });
   };
 
+  const handleChangeMobile = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setMobileVerify({ ...mobileVerify, [name]: value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await AuthService.edit(user);
+    history.push("/profile");
+  };
+
+  const handleSendOtp = async () => {
+    await OtpService.sendOtp();
+  };
+
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
+    await OtpService.verifyOtp(mobileVerify);
     history.push("/profile");
   };
 
@@ -29,6 +52,9 @@ export default function EditProfile() {
     async function fetchUser() {
       const res = await AuthService.profile();
       setUser(res);
+      setMobileVerify((prev) => {
+        return { ...prev, mobile: res.mobile };
+      });
     }
     fetchUser();
   }, []);
@@ -80,7 +106,7 @@ export default function EditProfile() {
                       type="password"
                       className="form-control rounded-0"
                       placeholder="Enter password"
-                      value={user.password}
+                      value={user.password || ""}
                       onChange={handleChange}
                     />
                   </div>
@@ -97,20 +123,27 @@ export default function EditProfile() {
                 <h3 className="mb-0 ">Profile Verification</h3>
               </div>
               <div className="card-body">
-                <form className="form">
+                <form className="form" onSubmit={handleVerifyOtp}>
                   <div className="form-group">
                     <label className="" htmlFor="mobile">
                       Mobile Number
                     </label>
                     <input
                       id="mobile"
+                      name="mobile"
                       type="tel"
                       className="form-control rounded-0"
                       placeholder="Enter your mobile number"
+                      value={mobileVerify.mobile}
+                      onChange={handleChangeMobile}
                     />
                   </div>
                   <div className="container text-center">
-                    <button type="button" className="btn btn-primary btn-sm">
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={handleSendOtp}
+                    >
                       Send OTP
                     </button>
                   </div>
@@ -121,8 +154,11 @@ export default function EditProfile() {
                     <input
                       id="otp"
                       type="text"
+                      name="otp"
                       className="form-control rounded-0"
                       placeholder="Enter otp"
+                      value={mobileVerify.otp}
+                      onChange={handleChangeMobile}
                     />
                   </div>
                   <button type="submit" className="btn btn-success float-right">

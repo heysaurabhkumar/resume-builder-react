@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import ResumeService from "../../services/ResumeService";
 
 export default function ResumeForm() {
@@ -20,6 +21,8 @@ export default function ResumeForm() {
     certification: [""],
     education: [""],
   });
+
+  const history = useHistory();
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -103,6 +106,7 @@ export default function ResumeForm() {
     e.preventDefault();
     // console.log(resumeForm);
     await ResumeService.resume(resumeForm);
+    history.push("/template");
   };
 
   useEffect(() => {

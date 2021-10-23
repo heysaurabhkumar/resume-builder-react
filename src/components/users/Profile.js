@@ -17,7 +17,7 @@ export default function Profile() {
       <div className="row pt-5">
         <div className="col-md-6 mx-auto">
           {!user?.verified && (
-            <div class="alert alert-danger">
+            <div className="alert alert-danger">
               <h2>
                 Mobile is not verified! Click here to verify now{" "}
                 <Link to="/edit">here</Link>
