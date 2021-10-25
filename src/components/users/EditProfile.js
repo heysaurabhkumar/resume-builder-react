@@ -71,33 +71,29 @@ export default function EditProfile() {
               <div className="card-body">
                 <form className="form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="" htmlFor="email">
-                      New Email
-                    </label>
+                    <label htmlFor="email">New Email</label>
                     <input
                       id="email"
                       name="email"
                       type="email"
                       className="form-control rounded-0"
-                      value={user.email}
+                      value={user.email || ""}
                       onChange={handleChange}
                     />
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="username">
-                      New Username
-                    </label>
+                    <label htmlFor="username">New Username</label>
                     <input
                       id="username"
                       name="username"
                       type="text"
                       className="form-control rounded-0"
-                      value={user.username}
+                      value={user.username || ""}
                       onChange={handleChange}
                     />
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="password">
+                    <label htmlFor="password">
                       Password or New Password If you want to change.
                     </label>
                     <input
@@ -125,16 +121,14 @@ export default function EditProfile() {
               <div className="card-body">
                 <form className="form" onSubmit={handleVerifyOtp}>
                   <div className="form-group">
-                    <label className="" htmlFor="mobile">
-                      Mobile Number
-                    </label>
+                    <label htmlFor="mobile">Mobile Number</label>
                     <input
                       id="mobile"
                       name="mobile"
                       type="tel"
                       className="form-control rounded-0"
                       placeholder="Enter your mobile number"
-                      value={mobileVerify.mobile}
+                      value={mobileVerify.mobile || ""}
                       onChange={handleChangeMobile}
                     />
                   </div>
@@ -148,16 +142,14 @@ export default function EditProfile() {
                     </button>
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="otp">
-                      OTP
-                    </label>
+                    <label htmlFor="otp">OTP</label>
                     <input
                       id="otp"
                       type="text"
                       name="otp"
                       className="form-control rounded-0"
                       placeholder="Enter otp"
-                      value={mobileVerify.otp}
+                      value={mobileVerify.otp || ""}
                       onChange={handleChangeMobile}
                     />
                   </div>
