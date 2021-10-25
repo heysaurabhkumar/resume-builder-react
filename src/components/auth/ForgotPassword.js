@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import AuthService from "../../services/AuthService";
 
 export default function ForgotPassword() {
+  const [forgotData, setForgotData] = useState({ email: "" });
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setForgotData({ ...forgotData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await AuthService.forgot(forgotData);
+    console.log(res);
+  };
   return (
     <>
       <div className="container">
@@ -11,7 +24,7 @@ export default function ForgotPassword() {
                 <h3 className="mb-0">Forgot Password</h3>
               </div>
               <div className="card-body">
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -20,6 +33,8 @@ export default function ForgotPassword() {
                       type="email"
                       className="form-control rounded-0"
                       placeholder="Enter registered email"
+                      value={forgotData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>

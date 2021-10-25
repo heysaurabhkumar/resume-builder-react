@@ -4,6 +4,8 @@ const loginUrl = "/api/login";
 const registerUrl = "/api/register";
 const profileUrl = "/api/profile";
 const editUrl = "/api/edit";
+const forgotUrl = "/api/forgot-password";
+const resetUrl = "/api/reset-password";
 
 const AuthService = {
   login: async (user) => {
@@ -53,6 +55,22 @@ const AuthService = {
       await axios.post(editUrl, user);
     } catch (err) {
       return console.log(err);
+    }
+  },
+  forgot: async (email) => {
+    try {
+      const res = await axios.post(forgotUrl, email);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  reset: async (data) => {
+    try {
+      const res = await axios.post(resetUrl, data);
+      return res;
+    } catch (error) {
+      return console.log(error);
     }
   },
 };
