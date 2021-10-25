@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
+import { OldSocialLogin as SocialLogin } from "react-social-login";
+
 import AuthService from "../../services/AuthService";
 
 export default function Login() {
@@ -16,6 +18,26 @@ export default function Login() {
     e.preventDefault();
     await AuthService.login(user);
     history.push("/profile");
+  };
+
+  const handleSocialLogin = async (user, err) => {
+    if (user) {
+      // console.log("sucess", user._token.idToken);
+      const res = await AuthService.google({ token: user._token.idToken });
+      // console.log(res.data.token);
+      if (res.data) {
+        let token = res.data.token;
+        localStorage.setItem("token", token);
+        if (res.data.firstTime) {
+          alert("Set your password first");
+          history.push("/edit");
+          return;
+        }
+        history.push("/profile");
+      }
+    } else {
+      console.log("failed", err);
+    }
   };
 
   useEffect(() => {
@@ -75,9 +97,15 @@ export default function Login() {
               </div>
             </div>
             <p className="text-center mt-3">Or</p>
-            <button className="google btn1" type="button">
-              Continue with Google
-            </button>
+            <SocialLogin
+              provider="google"
+              appId="823617306530-0b264uv74c5jm32i3lmr9ipmii3hah72.apps.googleusercontent.com"
+              callback={handleSocialLogin}
+            >
+              <button className="google btn1" type="button">
+                Continue with Google
+              </button>
+            </SocialLogin>
           </div>
         </div>
       </div>

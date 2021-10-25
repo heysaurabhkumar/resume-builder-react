@@ -6,6 +6,7 @@ const profileUrl = "/api/profile";
 const editUrl = "/api/edit";
 const forgotUrl = "/api/forgot-password";
 const resetUrl = "/api/reset-password";
+const googleUrl = "/api/google";
 
 const AuthService = {
   login: async (user) => {
@@ -68,6 +69,14 @@ const AuthService = {
   reset: async (data) => {
     try {
       const res = await axios.post(resetUrl, data);
+      return res;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
+  google: async (token) => {
+    try {
+      const res = await axios.post(googleUrl, token);
       return res;
     } catch (error) {
       return console.log(error);
