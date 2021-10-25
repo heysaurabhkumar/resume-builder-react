@@ -113,7 +113,9 @@ export default function ResumeForm() {
     async function fetchData() {
       const res = await ResumeService.template();
       // console.log(res);
-      setResumeForm(res);
+      if (res) {
+        setResumeForm(res);
+      }
     }
     fetchData();
   }, []);
