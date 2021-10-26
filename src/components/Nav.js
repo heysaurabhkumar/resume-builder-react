@@ -11,6 +11,7 @@ export default function Nav() {
     e.preventDefault();
     AuthService.logout();
     history.push("/login");
+    setLoggedin(AuthService.isLoggedIn());
   };
 
   useEffect(() => {
