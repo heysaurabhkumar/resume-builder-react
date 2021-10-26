@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import AuthService from "../../services/AuthService";
 
-export default function ForgotPassword() {
-  const [forgotData, setForgotData] = useState({ email: "" });
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setForgotData({ ...forgotData, [name]: value });
-  };
+import { forgotSchema } from "../../helpers/Validators";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await AuthService.forgot(forgotData);
+export default function ForgotPassword() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(forgotSchema),
+  });
+
+  const onSubmit = async (data) => {
+    const res = await AuthService.forgot(data);
     console.log(res);
   };
+
   return (
     <>
       <div className="container">
@@ -24,24 +30,25 @@ export default function ForgotPassword() {
                 <h3 className="mb-0">Forgot Password</h3>
               </div>
               <div className="card-body">
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
                       id="email"
-                      name="email"
-                      type="email"
                       className="form-control rounded-0"
                       placeholder="Enter registered email"
-                      value={forgotData.email}
-                      onChange={handleChange}
-                      required
+                      {...register("email")}
                     />
+                    {errors.email && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.email.message}
+                      </div>
+                    )}
                   </div>
                   <h5 className="mt-3">
                     A password reset link will be sent to your email.
                   </h5>
-                  <button className="btn btn-primary float-right">
+                  <button type="submit" className="btn btn-primary float-right">
                     Send Link
                   </button>
                 </form>

@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { OldSocialLogin as SocialLogin } from "react-social-login";
 
 import AuthService from "../../services/AuthService";
 
-export default function Login() {
-  const [user, setUser] = useState({ email: "", password: "" });
-  const history = useHistory();
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUser({ ...user, [name]: value });
-  };
+import { loginSchema } from "../../helpers/Validators";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await AuthService.login(user);
+export default function Login() {
+  const history = useHistory();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const onSubmit = async (data) => {
+    await AuthService.login(data);
     history.push("/profile");
   };
 
@@ -56,21 +61,22 @@ export default function Login() {
                 <h3 className="mb-0 ">Login</h3>
               </div>
               <div className="card-body">
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group">
                     <label className="" htmlFor="email">
                       Email
                     </label>
                     <input
-                      type="email"
                       id="email"
-                      name="email"
                       className="form-control rounded-0"
                       placeholder="Enter email"
-                      value={user.email}
-                      onChange={handleChange}
-                      required
+                      {...register("email")}
                     />
+                    {errors.email && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.email.message}
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
                     <label className="" htmlFor="password">
@@ -79,13 +85,15 @@ export default function Login() {
                     <input
                       type="password"
                       id="password"
-                      name="password"
                       className="form-control rounded-0"
                       placeholder="Enter password"
-                      value={user.password}
-                      onChange={handleChange}
-                      required
+                      {...register("password")}
                     />
+                    {errors.password && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.password.message}
+                      </div>
+                    )}
                   </div>
                   <Link className=" mt-10" to="/forgot-password">
                     Forgot Password

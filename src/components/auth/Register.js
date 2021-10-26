@@ -1,30 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import AuthService from "../../services/AuthService";
 
-export default function Register() {
-  const [user, setUser] = useState({
-    email: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
-  });
+import { registerSchema } from "../../helpers/Validators";
 
+export default function Register() {
   const history = useHistory();
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUser({ ...user, [name]: value });
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(registerSchema),
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await AuthService.register(user);
+  const onSubmit = async (data) => {
+    await AuthService.register(data);
     history.push("/profile");
-
-    // console.log(user);
   };
 
   useEffect(() => {
@@ -43,64 +39,74 @@ export default function Register() {
                 <h3 className="mb-0 ">Register</h3>
               </div>
               <div className="card-body">
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group">
                     <label className="" htmlFor="email">
                       Email
                     </label>
                     <input
-                      required
                       id="email"
-                      name="email"
-                      type="email"
                       className="form-control rounded-0"
-                      value={user.email}
-                      onChange={handleChange}
+                      placeholder="Enter email."
+                      {...register("email")}
                     />
+                    {errors.email && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.email.message}
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
                     <label className="" htmlFor="username">
                       Username
                     </label>
                     <input
-                      required
                       id="username"
-                      name="username"
-                      type="text"
                       className="form-control rounded-0"
-                      value={user.username}
-                      onChange={handleChange}
+                      placeholder="Enter username."
+                      {...register("username")}
                     />
+                    {errors.username && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.username.message}
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
                     <label className="" htmlFor="password">
                       Password
                     </label>
                     <input
-                      required
                       id="password"
-                      name="password"
                       type="password"
                       className="form-control rounded-0"
-                      value={user.password}
-                      onChange={handleChange}
+                      placeholder="Enter password"
+                      {...register("password")}
                     />
+                    {errors.password && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.password.message}
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
                     <label className="" htmlFor="confirmPassword">
                       Confirm Password
                     </label>
                     <input
-                      required
                       id="confirmPassword"
-                      name="confirmPassword"
                       type="password"
                       className="form-control rounded-0"
-                      value={user.confirmPassword}
-                      onChange={handleChange}
+                      placeholder="Confirm passwod."
+                      {...register("confirmPassword")}
                     />
+                    {errors.confirmPassword && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.confirmPassword.message}
+                      </div>
+                    )}
                   </div>
-                  <button className="btn btn-primary float-right">
+                  <button type="submit" className="btn btn-primary float-right">
                     Register
                   </button>
                 </form>
