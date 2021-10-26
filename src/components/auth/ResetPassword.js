@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import AuthService from "../../services/AuthService";
 
+import { resetSchema } from "../../helpers/Validators";
+
 export default function ResetPassword() {
+  const history = useHistory();
   const { id, token } = useParams();
-  const [data, setData] = useState({
-    password: "",
-    confirmPassword: "",
-    id: id,
-    token: token,
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(resetSchema),
   });
 
-  // console.log(id, token);
-
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData({ ...data, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await AuthService.reset(data);
+  const onSubmit = async (data) => {
+    const res = AuthService.reset({ ...data, id, token });
     console.log(res);
+    history.push("/login");
   };
+
   return (
     <>
       <div className="container">
@@ -34,36 +34,38 @@ export default function ResetPassword() {
                 <h3 className="mb-0 ">Reset Password</h3>
               </div>
               <div className="card-body">
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group">
-                    <label className="" htmlFor="passwordInput">
-                      New Password
-                    </label>
+                    <label htmlFor="password">New Password</label>
                     <input
-                      required
-                      id="passwordInput"
-                      name="password"
+                      id="password"
                       type="password"
                       className="form-control rounded-0"
-                      value={data.password}
-                      onChange={handleChange}
+                      placeholder="Enter new Password."
+                      {...register("password")}
                     />
+                    {errors.password && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.password.message}
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="confirmPasswordInput">
-                      Confirm Password
-                    </label>
+                    <label htmlFor="confirmPassword">Confirm Password</label>
                     <input
-                      required
-                      id="confirmPasswordInput"
-                      name="confirmPassword"
+                      id="confirmPassword"
                       type="password"
                       className="form-control rounded-0"
-                      value={data.confirmPassword}
-                      onChange={handleChange}
+                      placeholder="Confirm Password."
+                      {...register("confirmPassword")}
                     />
+                    {errors.confirmPassword && (
+                      <div className="alert alert-danger mt-2">
+                        {errors.confirmPassword.message}
+                      </div>
+                    )}
                   </div>
-                  <button className="btn btn-primary float-right">
+                  <button type="submit" className="btn btn-primary float-right">
                     Reset Password
                   </button>
                 </form>

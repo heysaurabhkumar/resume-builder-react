@@ -28,4 +28,15 @@ const registerSchema = yup.object().shape({
     .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
-export { loginSchema, forgotSchema, registerSchema };
+const resetSchema = yup.object().shape({
+  password: yup
+    .string()
+    .required("Required.")
+    .min(6, "Password should atleast 6 char long."),
+  confirmPassword: yup
+    .string()
+    .required("Required.")
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
+});
+
+export { loginSchema, forgotSchema, registerSchema, resetSchema };

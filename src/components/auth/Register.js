@@ -41,9 +41,7 @@ export default function Register() {
               <div className="card-body">
                 <form className="form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group">
-                    <label className="" htmlFor="email">
-                      Email
-                    </label>
+                    <label htmlFor="email">Email</label>
                     <input
                       id="email"
                       className="form-control rounded-0"
@@ -57,9 +55,7 @@ export default function Register() {
                     )}
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="username">
-                      Username
-                    </label>
+                    <label htmlFor="username">Username</label>
                     <input
                       id="username"
                       className="form-control rounded-0"
@@ -73,14 +69,12 @@ export default function Register() {
                     )}
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="password">
-                      Password
-                    </label>
+                    <label htmlFor="password">Password</label>
                     <input
                       id="password"
                       type="password"
                       className="form-control rounded-0"
-                      placeholder="Enter password"
+                      placeholder="Enter password."
                       {...register("password")}
                     />
                     {errors.password && (
@@ -90,9 +84,7 @@ export default function Register() {
                     )}
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="confirmPassword">
-                      Confirm Password
-                    </label>
+                    <label htmlFor="confirmPassword">Confirm Password</label>
                     <input
                       id="confirmPassword"
                       type="password"
