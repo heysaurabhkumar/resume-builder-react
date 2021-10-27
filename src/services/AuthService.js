@@ -55,6 +55,7 @@ const AuthService = {
   edit: async (user) => {
     try {
       await axios.post(editUrl, user);
+      swal("Updated", "Your profile has been updataed.", "success");
     } catch (err) {
       swal("Oops!", err.response.data, "error");
     }
@@ -62,6 +63,11 @@ const AuthService = {
   forgot: async (email) => {
     try {
       await axios.post(forgotUrl, email);
+      swal(
+        "Reset Link Sent",
+        "A password reset link has been sent to your email address. Open email and reset your password.",
+        "success"
+      );
     } catch (err) {
       swal("Oops!", err.response.data, "error");
     }

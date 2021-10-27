@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import swal from "sweetalert";
 
 import AuthService from "../../services/AuthService";
 
@@ -19,7 +20,12 @@ export default function ResetPassword() {
   });
 
   const onSubmit = async (data) => {
-    AuthService.reset({ ...data, id, token });
+    await AuthService.reset({ ...data, id, token });
+    swal(
+      "Password Updated",
+      "Your pasword has been updated. Login with new paword.",
+      "success"
+    );
     history.push("/login");
   };
 

@@ -94,6 +94,12 @@ label {
   color: #494a45;
 }
 
+.spinner-border {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
 @media screen and (max-width: 770px) {
   .vl {
     display: none;
