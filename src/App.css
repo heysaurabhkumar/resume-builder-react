@@ -37,11 +37,11 @@ label {
 }
 
 .template {
-  width: 40%;
+  width: 80%;
 }
 
 .template:hover {
-  width: 45%;
+  width: 85%;
   cursor: pointer;
 }
 
