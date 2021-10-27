@@ -38,7 +38,7 @@ export default function Register() {
       autoplay: true,
       animationData: require("../../lottie/register.json"),
     });
-  });
+  }, []);
 
   return (
     <>

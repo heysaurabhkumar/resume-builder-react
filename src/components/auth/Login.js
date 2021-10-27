@@ -60,7 +60,7 @@ export default function Login() {
       autoplay: true,
       animationData: require("../../lottie/login.json"),
     });
-  });
+  }, []);
 
   return (
     <>
