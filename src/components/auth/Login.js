@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import lottie from "lottie-web";
 
 import { OldSocialLogin as SocialLogin } from "react-social-login";
 
@@ -11,6 +12,8 @@ import { loginSchema } from "../../helpers/Validators";
 
 export default function Login() {
   const history = useHistory();
+
+  const container = useRef(null);
 
   const {
     register,
@@ -49,6 +52,14 @@ export default function Login() {
     if (AuthService.isLoggedIn()) {
       history.push("/profile");
     }
+
+    lottie.loadAnimation({
+      container: container.current,
+      render: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: require("../../lottie/login.json"),
+    });
   });
 
   return (
@@ -56,6 +67,9 @@ export default function Login() {
       <div className="container">
         <div className="row pt-5">
           <div className="col-md-6 mx-auto">
+            <div ref={container}></div>
+          </div>
+          <div className="col-md-6 mx-auto my-auto">
             <div className="card rounded-0">
               <div className="card-header">
                 <h3 className="mb-0 ">Login</h3>

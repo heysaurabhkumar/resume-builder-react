@@ -65,7 +65,7 @@ const AuthService = {
       await axios.post(forgotUrl, email);
       swal(
         "Reset Link Sent",
-        "A password reset link has been sent to your email address. Open email and reset your password.",
+        "A password reset link has been sent to your email address. Open email and reset your password within 15 minutes.",
         "success"
       );
     } catch (err) {

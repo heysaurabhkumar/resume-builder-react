@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import lottie from "lottie-web";
 
 import AuthService from "../../services/AuthService";
 
 import { forgotSchema } from "../../helpers/Validators";
 
 export default function ForgotPassword() {
+  const container = useRef(null);
+
   const {
     register,
     handleSubmit,
@@ -19,11 +22,24 @@ export default function ForgotPassword() {
     await AuthService.forgot(data);
   };
 
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      render: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: require("../../lottie/forget-password.json"),
+    });
+  }, []);
+
   return (
     <>
       <div className="container">
         <div className="row pt-5">
           <div className="col-md-6 mx-auto">
+            <div ref={container}></div>
+          </div>
+          <div className="col-md-6 mx-auto my-auto">
             <div className="card rounded-0">
               <div className="card-header">
                 <h3 className="mb-0">Forgot Password</h3>
