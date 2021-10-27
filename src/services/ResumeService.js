@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 const resumeUrl = "/api/resume";
 const templateUrl = "/api/template";
@@ -9,16 +10,16 @@ const ResumeService = {
       const res = await axios.post(resumeUrl, resumeData);
       //   return console.log(res);
       return res.data;
-    } catch (error) {
-      return console.log(error);
+    } catch (err) {
+      swal("Oops!", err.response.data, "error");
     }
   },
   template: async () => {
     try {
       const res = await axios.get(templateUrl);
       return res.data;
-    } catch (error) {
-      return console.log(error);
+    } catch (err) {
+      swal("Oops!", err.response.data, "error");
     }
   },
 };

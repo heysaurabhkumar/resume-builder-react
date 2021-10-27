@@ -73,7 +73,7 @@ export default function Login() {
                       {...register("email")}
                     />
                     {errors.email && (
-                      <div className="alert alert-danger mt-2">
+                      <div className="alert alert-danger mt-2" role="alert">
                         {errors.email.message}
                       </div>
                     )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import swal from "sweetalert";
 
 import AuthService from "../../services/AuthService";
 import OtpService from "../../services/OtpService";
@@ -12,6 +13,8 @@ export default function EditProfile() {
     mobile: "",
     verified: false,
   });
+
+  const [otpSent, setOtpSent] = useState(false);
 
   const [mobileVerify, setMobileVerify] = useState({
     mobile: "",
@@ -39,12 +42,18 @@ export default function EditProfile() {
   };
 
   const handleSendOtp = async () => {
-    await OtpService.sendOtp();
+    const res = await OtpService.sendOtp();
+    if (res.message) {
+      setOtpSent(true);
+    }
   };
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
-    await OtpService.verifyOtp(mobileVerify);
+    const res = await OtpService.verifyOtp(mobileVerify);
+    if (res.message) {
+      await swal("Verified", "Mobile verification successfull", "success");
+    }
     history.push("/profile");
   };
 
@@ -141,6 +150,11 @@ export default function EditProfile() {
                       Send OTP
                     </button>
                   </div>
+                  {otpSent && (
+                    <div class="alert alert-success mt-2">
+                      Otp hass been sent to your mobile number.
+                    </div>
+                  )}
                   <div className="form-group">
                     <label htmlFor="otp">OTP</label>
                     <input

@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 const sendOtpUrl = "/api/send-otp";
 const verifyOtpUrl = "/api/verify-otp";
@@ -8,16 +9,16 @@ const OtpService = {
     try {
       const res = await axios.post(sendOtpUrl, mobile);
       return res.data;
-    } catch (error) {
-      return console.log(error);
+    } catch (err) {
+      swal("Oops!", err.response.data, "error");
     }
   },
   verifyOtp: async (data) => {
     try {
       const res = await axios.post(verifyOtpUrl, { data });
       return res.data;
-    } catch (error) {
-      return console.log(error);
+    } catch (err) {
+      swal("Oops!", err.response.data, "error");
     }
   },
 };

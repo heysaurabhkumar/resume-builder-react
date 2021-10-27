@@ -16,8 +16,7 @@ export default function ForgotPassword() {
   });
 
   const onSubmit = async (data) => {
-    const res = await AuthService.forgot(data);
-    console.log(res);
+    await AuthService.forgot(data);
   };
 
   return (

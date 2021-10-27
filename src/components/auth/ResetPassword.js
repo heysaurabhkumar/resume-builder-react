@@ -19,8 +19,7 @@ export default function ResetPassword() {
   });
 
   const onSubmit = async (data) => {
-    const res = AuthService.reset({ ...data, id, token });
-    console.log(res);
+    AuthService.reset({ ...data, id, token });
     history.push("/login");
   };
 

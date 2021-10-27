@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 const loginUrl = "/api/login";
 const registerUrl = "/api/register";
@@ -14,7 +15,7 @@ const AuthService = {
       const res = await axios.post(loginUrl, user);
       localStorage.setItem("token", res.data.token);
     } catch (err) {
-      return console.log(err);
+      swal("Oops!", err.response.data, "error");
     }
   },
   getToken: () => {
@@ -29,9 +30,9 @@ const AuthService = {
   },
   logout: () => {
     try {
-      return localStorage.removeItem("token");
+      localStorage.removeItem("token");
     } catch (error) {
-      return console.log(error);
+      console.log(error);
     }
   },
   register: async (user) => {
@@ -39,7 +40,7 @@ const AuthService = {
       const res = await axios.post(registerUrl, user);
       localStorage.setItem("token", res.data.token);
     } catch (err) {
-      return console.log(err);
+      swal("Oops!", err.response.data, "error");
     }
   },
   profile: async () => {
@@ -48,38 +49,36 @@ const AuthService = {
       const user = res.data;
       return user;
     } catch (err) {
-      return console.log(err);
+      swal("Oops!", err.response.data, "error");
     }
   },
   edit: async (user) => {
     try {
       await axios.post(editUrl, user);
     } catch (err) {
-      return console.log(err);
+      swal("Oops!", err.response.data, "error");
     }
   },
   forgot: async (email) => {
     try {
-      const res = await axios.post(forgotUrl, email);
-      return res;
+      await axios.post(forgotUrl, email);
     } catch (err) {
-      return console.log(err);
+      swal("Oops!", err.response.data, "error");
     }
   },
   reset: async (data) => {
     try {
-      const res = await axios.post(resetUrl, data);
-      return res;
-    } catch (error) {
-      return console.log(error);
+      await axios.post(resetUrl, data);
+    } catch (err) {
+      swal("Oops!", err.response.data, "error");
     }
   },
   google: async (token) => {
     try {
       const res = await axios.post(googleUrl, token);
       return res;
-    } catch (error) {
-      return console.log(error);
+    } catch (err) {
+      swal("Oops!", err.response.data, "error");
     }
   },
 };
