@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import lottie from "lottie-web";
@@ -59,7 +59,7 @@ export default function Register() {
                     <input
                       id="email"
                       className="form-control rounded-0"
-                      placeholder="Enter email."
+                      placeholder="Enter email"
                       {...register("email")}
                     />
                     {errors.email && (
@@ -73,7 +73,7 @@ export default function Register() {
                     <input
                       id="username"
                       className="form-control rounded-0"
-                      placeholder="Enter username."
+                      placeholder="Enter username"
                       {...register("username")}
                     />
                     {errors.username && (
@@ -88,7 +88,7 @@ export default function Register() {
                       id="password"
                       type="password"
                       className="form-control rounded-0"
-                      placeholder="Enter password."
+                      placeholder="Enter password"
                       {...register("password")}
                     />
                     {errors.password && (
@@ -103,7 +103,7 @@ export default function Register() {
                       id="confirmPassword"
                       type="password"
                       className="form-control rounded-0"
-                      placeholder="Confirm passwod."
+                      placeholder="Confirm passwod"
                       {...register("confirmPassword")}
                     />
                     {errors.confirmPassword && (
@@ -118,6 +118,10 @@ export default function Register() {
                 </form>
               </div>
             </div>
+            <p className="mt-2">
+              Already have an account. <Link to="/login">Click here</Link> for
+              login.
+            </p>
           </div>
         </div>
       </div>

@@ -63,7 +63,7 @@ export default function ResetPassword() {
                       id="password"
                       type="password"
                       className="form-control rounded-0"
-                      placeholder="Enter new Password."
+                      placeholder="Enter new Password"
                       {...register("password")}
                     />
                     {errors.password && (
@@ -78,7 +78,7 @@ export default function ResetPassword() {
                       id="confirmPassword"
                       type="password"
                       className="form-control rounded-0"
-                      placeholder="Confirm Password."
+                      placeholder="Confirm Password"
                       {...register("confirmPassword")}
                     />
                     {errors.confirmPassword && (

@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
+import lottie from "lottie-web";
 
 import AuthService from "../../services/AuthService";
 import OtpService from "../../services/OtpService";
 
 export default function EditProfile() {
+  const container = useRef(null);
+
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({
     email: "",
@@ -66,6 +69,13 @@ export default function EditProfile() {
         return { ...prev, mobile: res.mobile };
       });
       setLoading((loading) => !loading);
+      lottie.loadAnimation({
+        container: container.current,
+        render: "svg",
+        loop: true,
+        autoplay: true,
+        animationData: require("../../lottie/edit-profile.json"),
+      });
     }
     fetchUser();
   }, []);
@@ -191,6 +201,9 @@ export default function EditProfile() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="col-md-6 mx-auto">
+            <div ref={container}></div>
           </div>
         </div>
       </>

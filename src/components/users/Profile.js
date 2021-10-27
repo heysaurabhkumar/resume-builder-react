@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import lottie from "lottie-web";
+
 import AuthService from "../../services/AuthService";
 
 export default function Profile() {
+  const container = useRef(null);
+
   const [user, setUser] = useState({ email: "", usename: "", verified: false });
   const [loading, setLoading] = useState(true);
 
@@ -11,6 +15,13 @@ export default function Profile() {
       const res = await AuthService.profile();
       setUser(res);
       setLoading((loading) => !loading);
+      lottie.loadAnimation({
+        container: container.current,
+        render: "svg",
+        loop: true,
+        autoplay: true,
+        animationData: require("../../lottie/profile.json"),
+      });
     }
     fetchUser();
   }, []);
@@ -29,6 +40,9 @@ export default function Profile() {
         <div className="container">
           <div className="row pt-5">
             <div className="col-md-6 mx-auto">
+              <div ref={container}></div>
+            </div>
+            <div className="col-md-6 mx-auto my-auto">
               {!user?.verified && (
                 <div className="alert alert-danger">
                   <h2>

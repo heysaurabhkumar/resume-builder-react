@@ -70,7 +70,12 @@ export default function Login() {
             <div ref={container}></div>
           </div>
           <div className="col-md-6 mx-auto my-auto">
-            <div className="card rounded-0">
+            <p className="mt-2 float-right">
+              Need an account? <Link to="/register">Click here</Link> for
+              register.
+            </p>
+            <br />
+            <div className="card rounded-0 w-100">
               <div className="card-header">
                 <h3 className="mb-0 ">Login</h3>
               </div>
