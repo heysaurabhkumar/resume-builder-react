@@ -6,16 +6,10 @@ export default function Home() {
       <div className="container">
         <div className="row pt-5">
           <div className="col-md-6 mx-auto">
-            <div className="card rounded-0">
-              <div className="card-header">
-                <h3 className="mb-0">Home</h3>
-              </div>
-              <div className="card-body">
-                <p className="card-text">
-                  This is the home page of resume builder website.
-                </p>
-              </div>
-            </div>
+            <h1 className="">Build Awesome Resume</h1>
+          </div>
+          <div className="col-md-6 mx-auto">
+            {/* <h1>Build Awesome Resume</h1> */}
           </div>
         </div>
       </div>

@@ -150,7 +150,7 @@ export default function EditProfile() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-12 mt-3">
+              <div className="col-md-12 mt-3 mb-5">
                 <div className="card rounded-0">
                   <div className="card-header">
                     <h3 className="mb-0 ">Profile Verification</h3>

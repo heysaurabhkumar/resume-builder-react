@@ -4,7 +4,7 @@
 }
 
 label {
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 body {
@@ -32,6 +32,7 @@ h6 {
 }
 
 .form-control {
+  margin-top: 2px;
   background-color: rgb(247, 247, 229);
 }
 
