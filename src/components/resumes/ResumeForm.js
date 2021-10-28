@@ -422,7 +422,7 @@ export default function ResumeForm() {
                 </div>
               </div>
               <div className="container text-center m-2">
-                <button type="submit" className="btn btn-primary btn-lg">
+                <button type="submit" className="btn btn-success btn-lg">
                   Save Resume
                 </button>
               </div>

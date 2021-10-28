@@ -112,7 +112,7 @@ export default function Register() {
                       </div>
                     )}
                   </div>
-                  <button type="submit" className="btn btn-primary float-right">
+                  <button type="submit" className="btn btn-success float-right">
                     Register
                   </button>
                 </form>

@@ -63,7 +63,7 @@ export default function ForgotPassword() {
                   <h5 className="mt-3">
                     A password reset link will be sent to your email.
                   </h5>
-                  <button type="submit" className="btn btn-primary float-right">
+                  <button type="submit" className="btn btn-success float-right">
                     Send Link
                   </button>
                 </form>

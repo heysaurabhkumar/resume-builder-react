@@ -21,7 +21,7 @@ export default function Error() {
           <div ref={container}></div>
         </div>
         <p>Enter valid url or Go back to Home Page.</p>
-        <Link className="btn btn-primary" to="/home">
+        <Link className="btn btn-success" to="/home">
           Home
         </Link>
       </div>

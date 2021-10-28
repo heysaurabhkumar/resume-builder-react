@@ -42,7 +42,7 @@ export default function ResumeTemplateOne() {
         <PDFExport
           ref={pdfExportComponent}
           paperSize="auto"
-          margin={40}
+          margin={0}
           fileName={`Resume ${resumeData.fullname}`}
           author="Resume Builder"
         >
@@ -181,7 +181,7 @@ export default function ResumeTemplateOne() {
 
         <div className="container text-center mb-3">
           <button
-            className="btn btn-primary btn-lg"
+            className="btn btn-success btn-lg"
             onClick={exportPDFWithComponent}
           >
             Download

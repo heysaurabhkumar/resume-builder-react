@@ -19,10 +19,10 @@ export default function Nav() {
   }, [loggedin]);
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            Resume Builder
+            Easy Resume
           </a>
           <button
             className="navbar-toggler"

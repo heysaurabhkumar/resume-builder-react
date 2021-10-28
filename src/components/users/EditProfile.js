@@ -138,7 +138,7 @@ export default function EditProfile() {
                     </div>
                     <button
                       type="submit"
-                      className="btn btn-primary float-right"
+                      className="btn btn-success float-right"
                     >
                       Update Profile
                     </button>
@@ -168,7 +168,7 @@ export default function EditProfile() {
                     <div className="container text-center">
                       <button
                         type="button"
-                        className="btn btn-primary btn-sm"
+                        className="btn btn-success btn-sm"
                         onClick={handleSendOtp}
                       >
                         Send OTP
