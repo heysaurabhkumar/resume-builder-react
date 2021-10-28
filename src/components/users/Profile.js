@@ -61,6 +61,11 @@ export default function Profile() {
                   </h3>
                 </div>
                 <div className="card-body">
+                  <img
+                    className="w-25 float-right"
+                    src="https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
+                    alt="profile"
+                  />
                   <h5 className="card-title">Hello {user.username}</h5>
                   <br />
                   <p className="card-text">Email: {user.email}</p>
