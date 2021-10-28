@@ -40,7 +40,7 @@ export default function Profile() {
         <div className="container">
           <div className="row pt-5">
             <div className="col-md-6 mx-auto">
-              <div ref={container}></div>
+              <div className="w-75" ref={container}></div>
             </div>
             <div className="col-md-6 mx-auto my-auto">
               {!user?.verified && (
