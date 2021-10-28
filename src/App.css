@@ -126,6 +126,7 @@ h6 {
   position: fixed;
   top: 50%;
   left: 50%;
+  color: #3e570e;
 }
 
 @media screen and (max-width: 770px) {

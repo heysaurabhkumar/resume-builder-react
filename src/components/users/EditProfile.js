@@ -94,116 +94,118 @@ export default function EditProfile() {
         <div className="container">
           <div className="row pt-5">
             <div className="col-md-6 mx-auto">
-              <div className="card rounded-0">
-                <div className="card-header">
-                  <h3 className="mb-0 ">Edit Profile</h3>
-                </div>
-                <div className="card-body">
-                  <form className="form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="email">New Email</label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        className="form-control rounded-0"
-                        value={user.email || ""}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="username">New Username</label>
-                      <input
-                        id="username"
-                        name="username"
-                        type="text"
-                        className="form-control rounded-0"
-                        value={user.username || ""}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password">
-                        Password or New Password If you want to change.
-                      </label>
-                      <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        className="form-control rounded-0"
-                        placeholder="Enter password"
-                        value={user.password || ""}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btn btn-success float-right"
-                    >
-                      Update Profile
-                    </button>
-                  </form>
-                </div>
-              </div>
+              <div ref={container}></div>
             </div>
             <div className="col-md-6 mx-auto">
-              <div className="card rounded-0">
-                <div className="card-header">
-                  <h3 className="mb-0 ">Profile Verification</h3>
-                </div>
-                <div className="card-body">
-                  <form className="form" onSubmit={handleVerifyOtp}>
-                    <div className="form-group">
-                      <label htmlFor="mobile">Mobile Number</label>
-                      <input
-                        id="mobile"
-                        name="mobile"
-                        type="tel"
-                        className="form-control rounded-0"
-                        placeholder="Enter your mobile number"
-                        value={mobileVerify.mobile || ""}
-                        onChange={handleChangeMobile}
-                      />
-                    </div>
-                    <div className="container text-center">
-                      <button
-                        type="button"
-                        className="btn btn-success btn-sm"
-                        onClick={handleSendOtp}
-                      >
-                        Send OTP
-                      </button>
-                    </div>
-                    {otpSent && (
-                      <div class="alert alert-success mt-2">
-                        Otp hass been sent to your mobile number.
+              <div className="col-md-12 mt-3">
+                <div className="card rounded-0">
+                  <div className="card-header">
+                    <h3 className="mb-0 ">Edit Profile</h3>
+                  </div>
+                  <div className="card-body">
+                    <form className="form" onSubmit={handleSubmit}>
+                      <div className="form-group">
+                        <label htmlFor="email">New Email</label>
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          className="form-control rounded-0"
+                          value={user.email || ""}
+                          onChange={handleChange}
+                        />
                       </div>
-                    )}
-                    <div className="form-group">
-                      <label htmlFor="otp">OTP</label>
-                      <input
-                        id="otp"
-                        type="text"
-                        name="otp"
-                        className="form-control rounded-0"
-                        placeholder="Enter otp"
-                        value={mobileVerify.otp || ""}
-                        onChange={handleChangeMobile}
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btn btn-success float-right"
-                    >
-                      Verify
-                    </button>
-                  </form>
+                      <div className="form-group">
+                        <label htmlFor="username">New Username</label>
+                        <input
+                          id="username"
+                          name="username"
+                          type="text"
+                          className="form-control rounded-0"
+                          value={user.username || ""}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="password">
+                          Password or New Password If you want to change.
+                        </label>
+                        <input
+                          id="password"
+                          name="password"
+                          type="password"
+                          className="form-control rounded-0"
+                          placeholder="Enter password"
+                          value={user.password || ""}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn btn-success float-right"
+                      >
+                        Update Profile
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-12 mt-3">
+                <div className="card rounded-0">
+                  <div className="card-header">
+                    <h3 className="mb-0 ">Profile Verification</h3>
+                  </div>
+                  <div className="card-body">
+                    <form className="form" onSubmit={handleVerifyOtp}>
+                      <div className="form-group">
+                        <label htmlFor="mobile">Mobile Number</label>
+                        <input
+                          id="mobile"
+                          name="mobile"
+                          type="tel"
+                          className="form-control rounded-0"
+                          placeholder="Enter your mobile number"
+                          value={mobileVerify.mobile || ""}
+                          onChange={handleChangeMobile}
+                        />
+                      </div>
+                      <div className="container text-center">
+                        <button
+                          type="button"
+                          className="btn btn-success btn-sm"
+                          onClick={handleSendOtp}
+                        >
+                          Send OTP
+                        </button>
+                      </div>
+                      {otpSent && (
+                        <div class="alert alert-success mt-2">
+                          Otp hass been sent to your mobile number.
+                        </div>
+                      )}
+                      <div className="form-group">
+                        <label htmlFor="otp">OTP</label>
+                        <input
+                          id="otp"
+                          type="text"
+                          name="otp"
+                          className="form-control rounded-0"
+                          placeholder="Enter otp"
+                          value={mobileVerify.otp || ""}
+                          onChange={handleChangeMobile}
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn btn-success float-right"
+                      >
+                        Verify
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-6 mx-auto">
-            <div ref={container}></div>
           </div>
         </div>
       </>
