@@ -26,6 +26,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     await AuthService.login(data);
     history.push("/profile");
+    window.location.reload(false);
   };
 
   const handleSocialLogin = async (user, err) => {
@@ -42,6 +43,7 @@ export default function Login() {
           return;
         }
         history.push("/profile");
+        window.location.reload(false);
       }
     } else {
       console.log("failed", err);
