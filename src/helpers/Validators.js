@@ -39,4 +39,10 @@ const resetSchema = yup.object().shape({
     .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
+// const editSchema = yup.object().shape({
+//   email: yup.string
+// })
+
+// const mobileSchema = ()=>{}
+
 export { loginSchema, forgotSchema, registerSchema, resetSchema };

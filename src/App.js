@@ -5,6 +5,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 // import Home from "./components/Home";
 // import Error from "./components/Error";
 // import Login from "./components/auth/Login";
@@ -64,7 +65,7 @@ function App() {
         >
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
+            {/* <Route exact path="/home" component={Home} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/forgot-password" component={ForgotPassword} />
@@ -94,6 +95,7 @@ function App() {
             <Route path="*" component={Error} />
           </Switch>
         </Suspense>
+        <Footer />
       </Router>
     </div>
   );

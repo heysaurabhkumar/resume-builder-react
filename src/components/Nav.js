@@ -19,11 +19,11 @@ export default function Nav() {
   }, [loggedin]);
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
+      <nav className="navbar sticky-top navbar-expand-lg navbar-dark navbar-custom">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <NavLink className="navbar-brand" to="/">
             Resume Builder
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -37,18 +37,19 @@ export default function Nav() {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/home">
                   Home
                 </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/profile">
-                  Profile
-                </NavLink>
-              </li>
+              </li> */}
+
               {loggedin && (
                 <>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/profile">
+                      Profile
+                    </NavLink>
+                  </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/template">
                       My Resume
