@@ -24,6 +24,7 @@ export default function Register() {
   const onSubmit = async (data) => {
     await AuthService.register(data);
     history.push("/profile");
+    window.location.reload(false);
   };
 
   useEffect(() => {

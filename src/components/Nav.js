@@ -22,7 +22,7 @@ export default function Nav() {
       <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            Easy Resume
+            Resume Builder
           </a>
           <button
             className="navbar-toggler"
