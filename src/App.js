@@ -95,6 +95,7 @@ function App() {
             <Route path="*" component={Error} />
           </Switch>
         </Suspense>
+        <div className="mt-5"></div>
         <Footer />
       </Router>
     </div>

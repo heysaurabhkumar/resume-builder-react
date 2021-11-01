@@ -40,6 +40,8 @@ export default function Login() {
         if (res.data.firstTime) {
           alert("Set your password first");
           history.push("/edit");
+          window.location.reload(false);
+
           return;
         }
         history.push("/profile");

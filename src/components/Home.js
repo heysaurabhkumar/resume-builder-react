@@ -39,7 +39,7 @@ export default function Home() {
                 className="btn btn-success mx-2"
                 onClick={toRegister}
               >
-                Signup
+                Register
               </button>
             </div>
             <div className="col-12 col-lg-6 col-md-12 mar">
