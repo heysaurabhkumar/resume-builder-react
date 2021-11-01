@@ -10,7 +10,7 @@ export default function Nav() {
   const logout = (e) => {
     e.preventDefault();
     AuthService.logout();
-    history.push("/login");
+    history.push("/");
     setLoggedin(AuthService.isLoggedIn());
   };
 
