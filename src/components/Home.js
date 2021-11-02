@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
+import AuthService from "../services/AuthService";
+
 export default function Home() {
+  const [display, setDisplay] = useState(false);
+
   const history = useHistory();
   const toLogin = () => {
     history.push("/login");
@@ -13,6 +17,15 @@ export default function Home() {
   const toResume = () => {
     history.push("/resume");
   };
+
+  const toStart = () => {
+    history.push("/resume");
+  };
+
+  useEffect(() => {
+    setDisplay(AuthService.isLoggedIn());
+  }, []);
+
   return (
     <>
       <div className="white-background">
@@ -27,20 +40,32 @@ export default function Home() {
                 writing. Choose from several templates and follow easy prompts
                 to create the perfect job-ready resume.
               </p>
-              <button
-                type="button"
-                className="btn btn-success"
-                onClick={toLogin}
-              >
-                Login
-              </button>
-              <button
-                type="button"
-                className="btn btn-success mx-2"
-                onClick={toRegister}
-              >
-                Register
-              </button>
+              {display ? (
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  onClick={toStart}
+                >
+                  Get Started
+                </button>
+              ) : (
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={toLogin}
+                  >
+                    Login
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-success mx-2"
+                    onClick={toRegister}
+                  >
+                    Register
+                  </button>
+                </div>
+              )}
             </div>
             <div className="col-12 col-lg-6 col-md-12 mar">
               <img

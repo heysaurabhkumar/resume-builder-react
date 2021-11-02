@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import lottie from "lottie-web";
+import swal from "sweetalert";
 
 import { OldSocialLogin as SocialLogin } from "react-social-login";
 
@@ -38,7 +39,8 @@ export default function Login() {
         let token = res.data.token;
         localStorage.setItem("token", token);
         if (res.data.firstTime) {
-          alert("Set your password first");
+          // alert("Set your password first");
+          swal("Required", "Set your password first", "info");
           history.push("/edit");
           window.location.reload(false);
 
@@ -86,9 +88,7 @@ export default function Login() {
               <div className="card-body">
                 <form className="form" onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group">
-                    <label className="" htmlFor="email">
-                      Email
-                    </label>
+                    <label htmlFor="email">Email</label>
                     <input
                       id="email"
                       className="form-control rounded-0"
@@ -102,9 +102,7 @@ export default function Login() {
                     )}
                   </div>
                   <div className="form-group">
-                    <label className="" htmlFor="password">
-                      Password
-                    </label>
+                    <label htmlFor="password">Password</label>
                     <input
                       type="password"
                       id="password"

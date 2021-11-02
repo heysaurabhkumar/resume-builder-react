@@ -1,60 +1,96 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import swal from "sweetalert";
 import lottie from "lottie-web";
 
 import AuthService from "../../services/AuthService";
 import OtpService from "../../services/OtpService";
 
+import { editSchema, mobileSchema } from "../../helpers/Validators";
+
 export default function EditProfile() {
   const container = useRef(null);
 
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({
-    email: "",
-    username: "",
-    password: "",
-    mobile: "",
-    verified: false,
+  // const [user, setUser] = useState({
+  //   email: "",
+  //   username: "",
+  //   password: "",
+  //   mobile: "",
+  //   verified: false,
+  // });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm({
+    resolver: yupResolver(editSchema),
+  });
+
+  const {
+    register: register2,
+    handleSubmit: handleSubmit2,
+    formState: { errors: errors2 },
+    setValue: setValue2,
+    getValues,
+  } = useForm({
+    resolver: yupResolver(mobileSchema),
+    mode: "onChange",
   });
 
   const [otpSent, setOtpSent] = useState(false);
+  const [mobileError, setMobileError] = useState(false);
 
-  const [mobileVerify, setMobileVerify] = useState({
-    mobile: "",
-    otp: "",
-  });
+  // const [mobileVerify, setMobileVerify] = useState({
+  //   mobile: "",
+  //   otp: "",
+  // });
 
   const history = useHistory();
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUser({ ...user, [name]: value });
-  };
+  // const handleChange = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   setUser({ ...user, [name]: value });
+  // };
 
-  const handleChangeMobile = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setMobileVerify({ ...mobileVerify, [name]: value });
-  };
+  // const handleChangeMobile = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   setMobileVerify({ ...mobileVerify, [name]: value });
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await AuthService.edit(user);
+  const onSubmit = async (data) => {
+    await AuthService.edit(data);
     history.push("/profile");
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await AuthService.edit(user);
+  //   history.push("/profile");
+  // };
+
   const handleSendOtp = async () => {
-    const res = await OtpService.sendOtp();
-    if (res.message) {
-      setOtpSent(true);
+    if (!getValues("mobile")) {
+      setMobileError(true);
+      setOtpSent(false);
+    } else {
+      const res = await OtpService.sendOtp();
+      if (res.message) {
+        setOtpSent(true);
+        setMobileError(false);
+      }
     }
   };
 
-  const handleVerifyOtp = async (e) => {
-    e.preventDefault();
-    const res = await OtpService.verifyOtp(mobileVerify);
+  const handleVerifyOtp = async (data) => {
+    // e.preventDefault();
+    const res = await OtpService.verifyOtp(data);
     if (res.message) {
       await swal("Verified", "Mobile verification successfull", "success");
     }
@@ -64,10 +100,14 @@ export default function EditProfile() {
   useEffect(() => {
     async function fetchUser() {
       const res = await AuthService.profile();
-      setUser(res);
-      setMobileVerify((prev) => {
-        return { ...prev, mobile: res.mobile };
-      });
+      // setUser(res);
+      setValue("email", res.email, { shouldValidate: true });
+      setValue("username", res.username, { shouldValidate: true });
+
+      // setMobileVerify((prev) => {
+      //   return { ...prev, mobile: res.mobile };
+      // });
+      setValue2("mobile", res.mobile, { shouldValidate: true });
       setLoading((loading) => !loading);
       lottie.loadAnimation({
         container: container.current,
@@ -103,28 +143,34 @@ export default function EditProfile() {
                     <h3 className="mb-0 ">Edit Profile</h3>
                   </div>
                   <div className="card-body">
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form" onSubmit={handleSubmit(onSubmit)}>
                       <div className="form-group">
                         <label htmlFor="email">New Email</label>
                         <input
                           id="email"
                           name="email"
-                          type="email"
                           className="form-control rounded-0"
-                          value={user.email || ""}
-                          onChange={handleChange}
+                          {...register("email")}
                         />
+                        {errors.email && (
+                          <div className="alert alert-danger mt-2" role="alert">
+                            {errors.email.message}
+                          </div>
+                        )}
                       </div>
                       <div className="form-group">
                         <label htmlFor="username">New Username</label>
                         <input
                           id="username"
                           name="username"
-                          type="text"
                           className="form-control rounded-0"
-                          value={user.username || ""}
-                          onChange={handleChange}
+                          {...register("username")}
                         />
+                        {errors.username && (
+                          <div className="alert alert-danger mt-2" role="alert">
+                            {errors.username.message}
+                          </div>
+                        )}
                       </div>
                       <div className="form-group">
                         <label htmlFor="password">
@@ -136,9 +182,13 @@ export default function EditProfile() {
                           type="password"
                           className="form-control rounded-0"
                           placeholder="Enter password"
-                          value={user.password || ""}
-                          onChange={handleChange}
+                          {...register("password")}
                         />
+                        {errors.password && (
+                          <div className="alert alert-danger mt-2" role="alert">
+                            {errors.password.message}
+                          </div>
+                        )}
                       </div>
                       <button
                         type="submit"
@@ -156,19 +206,30 @@ export default function EditProfile() {
                     <h3 className="mb-0 ">Profile Verification</h3>
                   </div>
                   <div className="card-body">
-                    <form className="form" onSubmit={handleVerifyOtp}>
+                    <form
+                      className="form"
+                      onSubmit={handleSubmit2(handleVerifyOtp)}
+                    >
                       <div className="form-group">
                         <label htmlFor="mobile">Mobile Number</label>
                         <input
                           id="mobile"
                           name="mobile"
-                          type="tel"
                           className="form-control rounded-0"
                           placeholder="Enter your mobile number"
-                          value={mobileVerify.mobile || ""}
-                          onChange={handleChangeMobile}
+                          {...register2("mobile")}
                         />
+                        {errors2.mobile && (
+                          <div className="alert alert-danger mt-2" role="alert">
+                            {errors2.mobile.message}
+                          </div>
+                        )}
                       </div>
+                      {mobileError && (
+                        <div class="alert alert-danger mt-2">
+                          Enter mobile number first.
+                        </div>
+                      )}
                       <div className="container text-center">
                         <button
                           type="button"
@@ -183,17 +244,21 @@ export default function EditProfile() {
                           Otp hass been sent to your mobile number.
                         </div>
                       )}
+
                       <div className="form-group">
                         <label htmlFor="otp">OTP</label>
                         <input
                           id="otp"
-                          type="text"
                           name="otp"
                           className="form-control rounded-0"
                           placeholder="Enter otp"
-                          value={mobileVerify.otp || ""}
-                          onChange={handleChangeMobile}
+                          {...register2("otp")}
                         />
+                        {errors2.otp && (
+                          <div className="alert alert-danger mt-2" role="alert">
+                            {errors2.otp.message}
+                          </div>
+                        )}
                       </div>
                       <button
                         type="submit"

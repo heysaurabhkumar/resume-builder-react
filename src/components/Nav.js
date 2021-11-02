@@ -10,6 +10,7 @@ export default function Nav() {
   const logout = (e) => {
     e.preventDefault();
     AuthService.logout();
+    window.location.reload(false);
     history.push("/");
     setLoggedin(AuthService.isLoggedIn());
   };
