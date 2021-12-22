@@ -29,6 +29,26 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### Screenshots of Website
+![1 home1](https://user-images.githubusercontent.com/42849052/147037026-a6d1f621-cc68-46d5-a93e-0e2cba65c630.PNG)
+![2 home2](https://user-images.githubusercontent.com/42849052/147037032-214a0248-f3d4-4b1e-9351-8a06daa1599f.PNG)
+![3 home3](https://user-images.githubusercontent.com/42849052/147037040-40b7f201-434b-4340-9896-8d1bcf17b649.PNG)
+![4 register](https://user-images.githubusercontent.com/42849052/147037044-c5559348-08f9-4719-abf3-85ea4399cdda.PNG)
+![5 login](https://user-images.githubusercontent.com/42849052/147037055-440ea37f-5c5b-435c-860f-3e4b22d74684.PNG)
+![6 profile](https://user-images.githubusercontent.com/42849052/147036952-a94f6942-9eb0-4fae-93cd-d4198f2f1501.PNG)
+![7 edit](https://user-images.githubusercontent.com/42849052/147036955-012c27bd-dded-4b74-a93f-9d9e62465dfe.PNG)
+![8 forgot](https://user-images.githubusercontent.com/42849052/147036963-97f74b31-ab5b-44e2-96f0-bad99766bccb.PNG)
+![9 reset](https://user-images.githubusercontent.com/42849052/147036970-4f291b93-f735-4de3-a5ae-9aae93ca394a.PNG)
+![10 builder1](https://user-images.githubusercontent.com/42849052/147036977-bec22287-bb42-4967-9728-bc9f934acdf7.PNG)
+![11 builder2](https://user-images.githubusercontent.com/42849052/147036981-3fb9f462-ed08-469a-b345-193e4d27de7c.PNG)
+![12 templates](https://user-images.githubusercontent.com/42849052/147036991-aadd465a-1617-4475-8e7e-6691fd730e5d.PNG)
+![13 template11](https://user-images.githubusercontent.com/42849052/147036998-985cb1e0-8118-4a77-b92f-eb2ae674e07f.PNG)
+![14 template12](https://user-images.githubusercontent.com/42849052/147037003-de2d8456-79a0-4a99-ac68-c4f3e9533c23.PNG)
+![15 template21](https://user-images.githubusercontent.com/42849052/147037008-a4dc9231-c5c0-4cc5-9ad3-d47f1e5a2270.PNG)
+![16 template22](https://user-images.githubusercontent.com/42849052/147037017-de5fd3b1-6224-48bb-aa73-0245806215f3.PNG)
+
+
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
